@@ -198,7 +198,6 @@ import type XMLHttpRequestUpload from '../xml-http-request/XMLHttpRequestUpload.
 import XMLSerializer from '../xml-serializer/XMLSerializer.js';
 import type CrossOriginBrowserWindow from './CrossOriginBrowserWindow.js';
 import type INodeJSGlobal from './INodeJSGlobal.js';
-import VMGlobalPropertyScript from './VMGlobalPropertyScript.js';
 import WindowPageOpenUtility from './WindowPageOpenUtility.js';
 import type { PerformanceObserverEntryList as IPerformanceObserverEntryList } from 'node:perf_hooks';
 import { PerformanceObserver, PerformanceEntry } from 'node:perf_hooks';
@@ -1869,7 +1868,16 @@ export default class BrowserWindow extends EventTarget implements INodeJSGlobal 
 
 			// Sets global properties from the VM to the Window object.
 			// Otherwise "this.Array" will be undefined for example.
-			VMGlobalPropertyScript.runInContext(this);
+			const vmGlobalThis = VM.runInContext('this', this);
+			for (const key of Object.getOwnPropertyNames(vmGlobalThis)) {
+				if (key in this) {
+					continue;
+				}
+				const descriptor = Object.getOwnPropertyDescriptor(vmGlobalThis, key);
+				if (descriptor) {
+					Object.defineProperty(this, key, descriptor);
+				}
+			}
 		}
 	}
 
