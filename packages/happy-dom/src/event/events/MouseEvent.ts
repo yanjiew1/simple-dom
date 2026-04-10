@@ -1,6 +1,7 @@
 import UIEvent from '../UIEvent.js';
 import type EventTarget from '../EventTarget.js';
 import type IMouseEventInit from './IMouseEventInit.js';
+import type { BrowserWindow } from 'src/index.js';
 
 /**
  *
@@ -48,5 +49,32 @@ export default class MouseEvent extends UIEvent {
 		this.screenX = eventInit?.screenX ?? 0;
 		this.screenY = eventInit?.screenY ?? 0;
 		this.shiftKey = eventInit?.shiftKey ?? false;
+	}
+
+	public initMouseEvent(
+		type: string,
+		bubbles = false,
+		cancelable = false,
+		view: BrowserWindow | null = null,
+		detail = 0,
+		screenX = 0,
+		screenY = 0,
+		clientX = 0,
+		clientY = 0,
+		shiftKey = false,
+		ctrlKey = false,
+		altKey = false,
+		metaKey = false
+	): void {
+		this.initUIEvent(type, bubbles, cancelable, view, detail);
+		Object.assign(this, {
+			screenX,
+			screenY,
+			clientX,
+			clientY,
+			shiftKey,
+			ctrlKey,
+			altKey,
+			metaKey });
 	}
 }
