@@ -16,6 +16,7 @@ export default class UIEvent extends Event {
 	public readonly pageX: number = 0;
 	public readonly pageY: number = 0;
 	public readonly view: BrowserWindow | null;
+	public readonly which: number = 0;
 
 	/**
 	 * Constructor.
@@ -28,5 +29,24 @@ export default class UIEvent extends Event {
 
 		this.detail = eventInit?.detail ?? 0;
 		this.view = eventInit?.view ?? null;
+	}
+
+	/**
+	 * Init UI event.
+	 *
+	 * @deprecated
+	 * @param type Type.
+	 * @param [bubbles=false] "true" if it bubbles.
+	 * @param [cancelable=false] "true" if it cancelable.
+	 */
+	public initUIEvent(
+		type: string,
+		bubbles = false,
+		cancelable = false,
+		view: BrowserWindow | null = null,
+		detail = 0 
+	): void {
+		this.initEvent(type, bubbles, cancelable);
+		Object.assign(this, { view, detail });
 	}
 }
