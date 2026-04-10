@@ -1,10 +1,10 @@
-import { URL } from 'url';
+import { URL } from 'node:url';
 import * as PropertySymbol from '../PropertySymbol.js';
 import type BrowserWindow from '../window/BrowserWindow.js';
 import type Location from '../location/Location.js';
 import WindowBrowserContext from '../window/WindowBrowserContext.js';
-import Path from 'path';
-import FS from 'fs';
+import Path from 'node:path';
+import FS from 'node:fs';
 import type IResolveNodeModules from './types/IResolveNodeModules.js';
 
 const MAIN_FIELDS = ['module', 'main'];

@@ -1,5 +1,5 @@
 import * as PropertySymbol from '../../PropertySymbol.js';
-import Crypto from 'crypto';
+import Crypto from 'node:crypto';
 import EventTarget from '../../event/EventTarget.js';
 import MediaStreamTrackEvent from '../../event/events/MediaStreamTrackEvent.js';
 import type MediaStreamTrack from './MediaStreamTrack.js';

@@ -1,7 +1,7 @@
 import MultipartFormDataParser from '../multipart/MultipartFormDataParser.js';
-import { ReadableStream } from 'stream/web';
+import { ReadableStream } from 'node:stream/web';
 import * as PropertySymbol from '../../PropertySymbol.js';
-import { URLSearchParams } from 'url';
+import { URLSearchParams } from 'node:url';
 import FormData from '../../form-data/FormData.js';
 import Blob from '../../file/Blob.js';
 import DOMException from '../../exception/DOMException.js';
@@ -9,7 +9,7 @@ import DOMExceptionNameEnum from '../../exception/DOMExceptionNameEnum.js';
 import type { TRequestBody } from '../types/TRequestBody.js';
 import type { TResponseBody } from '../types/TResponseBody.js';
 import { Buffer } from 'buffer';
-import Stream from 'stream';
+import Stream from 'node:stream';
 import type BrowserWindow from '../../window/BrowserWindow.js';
 
 /**

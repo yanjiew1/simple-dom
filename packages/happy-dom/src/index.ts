@@ -1,4 +1,4 @@
-import { URLSearchParams } from 'url';
+import { URLSearchParams } from 'node:url';
 import * as PropertySymbol from './PropertySymbol.js';
 import Browser from './browser/Browser.js';
 import BrowserContext from './browser/BrowserContext.js';

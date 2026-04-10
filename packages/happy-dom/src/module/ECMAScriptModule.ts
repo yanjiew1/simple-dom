@@ -1,5 +1,5 @@
 import type BrowserWindow from '../window/BrowserWindow.js';
-import { URL } from 'url';
+import { URL } from 'node:url';
 import type IModule from './types/IModule.js';
 import ECMAScriptModuleCompiler from './ECMAScriptModuleCompiler.js';
 import * as PropertySymbol from '../PropertySymbol.js';

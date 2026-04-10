@@ -3,7 +3,7 @@ import ECMAScriptModule from '../../module/ECMAScriptModule.js';
 import JSONModule from '../../module/JSONModule.js';
 import ModuleFactory from '../../module/ModuleFactory.js';
 import type IBrowserFrame from '../types/IBrowserFrame.js';
-import { Script } from 'vm';
+import { Script } from 'node:vm';
 
 /**
  * Browser frame script evaluator.

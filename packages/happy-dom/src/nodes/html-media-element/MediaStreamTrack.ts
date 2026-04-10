@@ -1,7 +1,7 @@
 import type Event from '../../event/Event.js';
 import EventTarget from '../../event/EventTarget.js';
 import * as PropertySymbol from '../../PropertySymbol.js';
-import Crypto from 'crypto';
+import Crypto from 'node:crypto';
 import type IMediaTrackCapabilities from './IMediaTrackCapabilities.js';
 import type IMediaTrackSettings from './IMediaTrackSettings.js';
 const CAPABILITIES: IMediaTrackCapabilities = {

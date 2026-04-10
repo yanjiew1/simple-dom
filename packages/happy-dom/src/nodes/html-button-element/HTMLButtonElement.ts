@@ -6,7 +6,7 @@ import HTMLElement from '../html-element/HTMLElement.js';
 import type HTMLFormElement from '../html-form-element/HTMLFormElement.js';
 import HTMLLabelElementUtility from '../html-label-element/HTMLLabelElementUtility.js';
 import type HTMLLabelElement from '../html-label-element/HTMLLabelElement.js';
-import { URL } from 'url';
+import { URL } from 'node:url';
 import MouseEvent from '../../event/events/MouseEvent.js';
 import type NodeList from '../node/NodeList.js';
 

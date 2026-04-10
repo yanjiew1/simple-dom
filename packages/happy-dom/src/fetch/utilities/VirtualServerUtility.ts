@@ -1,6 +1,6 @@
 import type BrowserWindow from '../../window/BrowserWindow.js';
 import WindowBrowserContext from '../../window/WindowBrowserContext.js';
-import Path from 'path';
+import Path from 'node:path';
 import type Response from '../Response.js';
 import type ISyncResponse from '../types/ISyncResponse.js';
 import * as PropertySymbol from '../../PropertySymbol.js';

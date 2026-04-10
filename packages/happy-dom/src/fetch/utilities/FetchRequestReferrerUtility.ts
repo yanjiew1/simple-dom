@@ -1,7 +1,7 @@
 import URL from '../../url/URL.js';
 import * as PropertySymbol from '../../PropertySymbol.js';
 import type BrowserWindow from '../../window/BrowserWindow.js';
-import { isIP } from 'net';
+import { isIP } from 'node:net';
 import type Headers from '../Headers.js';
 import type { TRequestReferrerPolicy } from '../types/TRequestReferrerPolicy.js';
 import type Request from '../Request.js';

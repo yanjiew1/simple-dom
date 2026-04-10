@@ -1,6 +1,6 @@
 import * as PropertySymbol from '../PropertySymbol.js';
 import type IRequestInit from './types/IRequestInit.js';
-import { URL } from 'url';
+import { URL } from 'node:url';
 import DOMExceptionNameEnum from '../exception/DOMExceptionNameEnum.js';
 import type { TRequestInfo } from './types/TRequestInfo.js';
 import type Headers from './Headers.js';

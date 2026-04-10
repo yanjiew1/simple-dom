@@ -5,7 +5,7 @@ import CookieStringUtility from '../../cookie/urilities/CookieStringUtility.js';
 import type Headers from '../Headers.js';
 import type Request from '../Request.js';
 import FetchCORSUtility from './FetchCORSUtility.js';
-import { URL } from 'url';
+import { URL } from 'node:url';
 
 const FORBIDDEN_HEADER_NAMES = [
 	'accept-charset',

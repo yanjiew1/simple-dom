@@ -3,7 +3,7 @@ import Blob from '../file/Blob.js';
 import type IResponseInit from './types/IResponseInit.js';
 import type { TResponseBody } from './types/TResponseBody.js';
 import type Headers from './Headers.js';
-import { URLSearchParams } from 'url';
+import { URLSearchParams } from 'node:url';
 import URL from '../url/URL.js';
 import type { ReadableStream } from 'stream/web';
 import type FormData from '../form-data/FormData.js';

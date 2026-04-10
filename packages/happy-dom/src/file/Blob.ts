@@ -1,5 +1,5 @@
 import { Buffer } from 'buffer';
-import { ReadableStream } from 'stream/web';
+import { ReadableStream } from 'node:stream/web';
 import * as PropertySymbol from '../PropertySymbol.js';
 
 /**

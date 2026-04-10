@@ -1,8 +1,8 @@
 import type ICachedResponse from './ICachedResponse.js';
 import Headers from '../../Headers.js';
-import FS from 'fs';
-import Path from 'path';
-import Crypto from 'crypto';
+import FS from 'node:fs';
+import Path from 'node:path';
+import Crypto from 'node:crypto';
 import type IResponseCacheFileSystem from './IResponseCacheFileSystem.js';
 
 /**

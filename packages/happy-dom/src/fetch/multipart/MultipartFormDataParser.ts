@@ -1,5 +1,5 @@
 import type FormData from '../../form-data/FormData.js';
-import { ReadableStream } from 'stream/web';
+import { ReadableStream } from 'node:stream/web';
 import * as PropertySymbol from '../../PropertySymbol.js';
 import MultipartReader from './MultipartReader.js';
 import DOMExceptionNameEnum from '../../exception/DOMExceptionNameEnum.js';

@@ -1,10 +1,10 @@
-import { Buffer } from 'buffer';
-import { webcrypto } from 'crypto';
-import { TextEncoder, TextDecoder } from 'util';
-import Stream from 'stream';
-import { ReadableStream } from 'stream/web';
-import { URLSearchParams } from 'url';
-import VM from 'vm';
+import { Buffer } from 'node:buffer';
+import { webcrypto } from 'node:crypto';
+import { TextEncoder, TextDecoder } from 'node:util';
+import Stream from 'node:stream';
+import { ReadableStream } from 'node:stream/web';
+import { URLSearchParams } from 'node:url';
+import VM from 'node:vm';
 import * as PropertySymbol from '../PropertySymbol.js';
 import Base64 from '../base64/Base64.js';
 import BrowserErrorCaptureEnum from '../browser/enums/BrowserErrorCaptureEnum.js';

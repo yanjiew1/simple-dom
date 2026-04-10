@@ -16,7 +16,7 @@ import HTMLLabelElementUtility from '../html-label-element/HTMLLabelElementUtili
 import type HTMLDataListElement from '../html-data-list-element/HTMLDataListElement.js';
 import type Document from '../document/Document.js';
 import type ShadowRoot from '../shadow-root/ShadowRoot.js';
-import { URL } from 'url';
+import { URL } from 'node:url';
 import MouseEvent from '../../event/events/MouseEvent.js';
 import type NodeList from '../node/NodeList.js';
 import ElementEventAttributeUtility from '../element/ElementEventAttributeUtility.js';

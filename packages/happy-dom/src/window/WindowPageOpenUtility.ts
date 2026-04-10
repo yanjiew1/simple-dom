@@ -3,7 +3,7 @@ import CrossOriginBrowserWindow from './CrossOriginBrowserWindow.js';
 import type IBrowserFrame from '../browser/types/IBrowserFrame.js';
 import FetchCORSUtility from '../fetch/utilities/FetchCORSUtility.js';
 import BrowserFrameURL from '../browser/utilities/BrowserFrameURL.js';
-import { URL } from 'url';
+import { URL } from 'node:url';
 import * as PropertySymbol from '../PropertySymbol.js';
 
 /**
