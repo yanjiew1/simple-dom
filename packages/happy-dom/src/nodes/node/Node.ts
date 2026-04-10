@@ -40,10 +40,13 @@ export default class Node extends EventTarget {
 	public static readonly TEXT_NODE = NodeTypeEnum.textNode;
 	public static readonly CDATA_SECTION_NODE = NodeTypeEnum.cdataSectionNode;
 	public static readonly COMMENT_NODE = NodeTypeEnum.commentNode;
+	public static readonly ENTITY_REFERENCE_NODE = NodeTypeEnum.entityReferenceNode;
+	public static readonly ENTITY_NODE = NodeTypeEnum.entityNode;
 	public static readonly DOCUMENT_NODE = NodeTypeEnum.documentNode;
 	public static readonly DOCUMENT_TYPE_NODE = NodeTypeEnum.documentTypeNode;
 	public static readonly DOCUMENT_FRAGMENT_NODE = NodeTypeEnum.documentFragmentNode;
 	public static readonly PROCESSING_INSTRUCTION_NODE = NodeTypeEnum.processingInstructionNode;
+	public static readonly NOTATION_NODE = NodeTypeEnum.notationNode;
 	public static readonly DOCUMENT_POSITION_CONTAINED_BY = NodeDocumentPositionEnum.containedBy;
 	public static readonly DOCUMENT_POSITION_CONTAINS = NodeDocumentPositionEnum.contains;
 	public static readonly DOCUMENT_POSITION_DISCONNECTED = NodeDocumentPositionEnum.disconnect;
@@ -58,10 +61,13 @@ export default class Node extends EventTarget {
 	public declare readonly TEXT_NODE: NodeTypeEnum;
 	public declare readonly CDATA_SECTION_NODE: NodeTypeEnum;
 	public declare readonly COMMENT_NODE: NodeTypeEnum;
+	public declare readonly ENTITY_REFERENCE_NODE: NodeTypeEnum;
+	public declare readonly ENTITY_NODE: NodeTypeEnum;
 	public declare readonly DOCUMENT_NODE: NodeTypeEnum;
 	public declare readonly DOCUMENT_TYPE_NODE: NodeTypeEnum;
 	public declare readonly DOCUMENT_FRAGMENT_NODE: NodeTypeEnum;
 	public declare readonly PROCESSING_INSTRUCTION_NODE: NodeTypeEnum;
+	public declare readonly NOTATION_NODE: NodeTypeEnum;
 	public declare readonly DOCUMENT_POSITION_CONTAINED_BY: NodeDocumentPositionEnum;
 	public declare readonly DOCUMENT_POSITION_CONTAINS: NodeDocumentPositionEnum;
 	public declare readonly DOCUMENT_POSITION_DISCONNECTED: NodeDocumentPositionEnum;
@@ -1325,10 +1331,13 @@ export default class Node extends EventTarget {
 (<NodeTypeEnum>Node.prototype.TEXT_NODE) = NodeTypeEnum.textNode;
 (<NodeTypeEnum>Node.prototype.CDATA_SECTION_NODE) = NodeTypeEnum.cdataSectionNode;
 (<NodeTypeEnum>Node.prototype.COMMENT_NODE) = NodeTypeEnum.commentNode;
+(<NodeTypeEnum>Node.prototype.ENTITY_REFERENCE_NODE) = NodeTypeEnum.entityReferenceNode;
+(<NodeTypeEnum>Node.prototype.ENTITY_NODE) = NodeTypeEnum.entityNode;
 (<NodeTypeEnum>Node.prototype.DOCUMENT_NODE) = NodeTypeEnum.documentNode;
 (<NodeTypeEnum>Node.prototype.DOCUMENT_TYPE_NODE) = NodeTypeEnum.documentTypeNode;
 (<NodeTypeEnum>Node.prototype.DOCUMENT_FRAGMENT_NODE) = NodeTypeEnum.documentFragmentNode;
 (<NodeTypeEnum>Node.prototype.PROCESSING_INSTRUCTION_NODE) = NodeTypeEnum.processingInstructionNode;
+(<NodeTypeEnum>Node.prototype.NOTATION_NODE) = NodeTypeEnum.notationNode;
 (<NodeDocumentPositionEnum>Node.prototype.DOCUMENT_POSITION_CONTAINED_BY) =
 	NodeDocumentPositionEnum.containedBy;
 (<NodeDocumentPositionEnum>Node.prototype.DOCUMENT_POSITION_CONTAINS) =
