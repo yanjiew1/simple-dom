@@ -1322,6 +1322,110 @@ export default class Node extends EventTarget {
 	public isSameNode(node: Node): boolean {
 		return this === node;
 	}
+
+	/**
+	 * Lookup up the namespace prefix using the given namespace.
+	 *
+	 * @see https://dom.spec.whatwg.org/#dom-node-lookupprefix
+	 * @param namespace Namespace to lookup.
+	 * @returns Namespace prefix if found, otherwise null.
+	 */
+	public lookupPrefix(namespace: string | null): string | null {
+		if (!namespace) {
+			return null;
+		}
+	
+		if (this.nodeType === NodeTypeEnum.elementNode) {
+			const element = <Element><any>this;
+			if (element[PropertySymbol.namespaceURI] === namespace && element[PropertySymbol.prefix]) {
+				return element[PropertySymbol.prefix];
+			}
+			for (const attribute of element[PropertySymbol.attributes][PropertySymbol.items].values()) {
+				if (attribute.prefix === 'xmlns' && attribute.value === namespace) {
+					return attribute.localName;
+				}
+			}
+			if (this.parentElement) {
+				return this.parentElement.lookupPrefix(namespace);
+			}
+			return null;
+		} else if (this.nodeType === NodeTypeEnum.documentNode) {
+			const document = <Document><any>this;
+			if (!document.documentElement) {
+				return null;
+			} else {
+				return document.documentElement.lookupPrefix(namespace);
+			}
+		} else if (this.nodeType === NodeTypeEnum.documentFragmentNode || this.nodeType === NodeTypeEnum.documentTypeNode) {
+			return null;
+		} else if (this.nodeType === NodeTypeEnum.attributeNode) {
+			const attribute = <Attr><any>this;
+			if (!attribute.ownerElement) {
+				return null;
+			} else {
+				return attribute.ownerElement.lookupPrefix(namespace);
+			}
+		} else {
+			if (this.parentElement) {
+				return this.parentElement.lookupPrefix(namespace);
+			}
+			return null;
+		}
+	}
+
+	/**
+	 * Lookup up the namespace URI using the given prefix.
+	 *
+	 * @see https://dom.spec.whatwg.org/#dom-node-lookupnamespaceuri
+	 * @param prefix Prefix to lookup.
+	 * @returns Namespace URI if found, otherwise null.
+	 */
+	public lookupNamespaceURI(prefix: string | null): string | null {
+		if (prefix === "") {
+			prefix = null;
+		}
+		if (this instanceof Element) {
+			if (this.prefix === "xml") {
+				return "http://www.w3.org/XML/1998/namespace";
+			}
+			if (this.prefix === "xmlns") {
+				return "http://www.w3.org/2000/xmlns/";
+			}
+			if (this.namespaceURI && this.prefix === prefix) {
+				return this.namespaceURI;
+			}
+			for (const attribute of this[PropertySymbol.attributes][PropertySymbol.items].values()) {
+				if (attribute.namespaceURI !== 'http://www.w3.org/2000/xmlns/') {
+					continue;
+				}
+				if (
+					(attribute.prefix === 'xmlns' && attribute.localName === prefix) ||
+					(prefix === null && attribute.prefix === null && attribute.localName === 'xmlns')
+				) {
+					return attribute.value || null;
+				}
+			}
+			if (!this.parentElement) {
+				return null;
+			}
+			return this.parentElement.lookupNamespaceURI(prefix);
+		} else if (this instanceof Document) {
+			if (!this.documentElement) {
+				return null;
+			}
+			return this.documentElement.lookupNamespaceURI(prefix);
+		} else if (this instanceof DocumentFragment || this instanceof DocumentType) {
+			return null;
+		} else if (this instanceof Attr) {
+			return this.ownerElement?.lookupNamespaceURI(prefix) ?? null;
+		} else {
+			return this.parentElement?.lookupNamespaceURI(prefix) ?? null;
+		}
+	}
+
+	public isDefaultNamespace(namespace: string | null): boolean {
+		return this.lookupNamespaceURI(null) === namespace;
+	}
 }
 
 // According to the spec, these properties should be on the prototype.
