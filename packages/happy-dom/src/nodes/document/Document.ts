@@ -6,6 +6,15 @@ import NodeIterator from '../../tree-walker/NodeIterator.js';
 import TreeWalker from '../../tree-walker/TreeWalker.js';
 import type DocumentFragment from '../document-fragment/DocumentFragment.js';
 import Event from '../../event/Event.js';
+import CustomEvent from '../../event/events/CustomEvent.js';
+import FocusEvent from '../../event/events/FocusEvent.js';
+import HashChangeEvent from '../../event/events/HashChangeEvent.js';
+import KeyboardEvent from '../../events/KeyboardEvent.js';
+import MessageEvent from '../../events/MessageEvent.js';
+import MouseEvent from '../../events/MouseEvent.js';
+import StorageEvent from '../../events/StorageEvent.js';
+import TouchEvent from '../../events/TouchEvent.js';
+import UIEvent from '../../UIEvent.js';
 import DOMImplementation from '../../dom-implementation/DOMImplementation.js';
 import type { TNodeFilter } from '../../tree-walker/TNodeFilter.js';
 import NamespaceURI from '../../config/NamespaceURI.js';
@@ -54,6 +63,33 @@ import type SVGScriptElement from '../svg-script-element/SVGScriptElement.js';
 import type ICachedComputedStyleResult from '../node/ICachedComputedStyleResult.js';
 
 const PROCESSING_INSTRUCTION_TARGET_REGEXP = /^[a-z][a-z0-9-]+$/;
+
+const EventTypes: Record<string, typeof Event> = {
+	customevent: CustomEvent,
+	event: Event,
+	events: Event,
+	focusevent: FocusEvent,
+	hashchangeevent: HashChangeEvent,
+	htmlevents: Event,
+	keyboardevent: KeyboardEvent,
+	messageevent: MessageEvent,
+	mouseevent: MouseEvent,
+	mouseevents: MouseEvent,
+	storageevent: StorageEvent,
+	svgevents: Event,
+	touchevent: TouchEvent,
+	uievent: UIEvent,
+	uievents: UIEvent
+	/* 
+	 * Unsupported Events: 
+	 *  beforeunloadevent: BeforeUnloadEvent,
+	 *  compositionevent: CompositionEvent,
+	 *  devicemotionevent: DeviceMotionEvent,
+	 *  deviceorientationevent: DeviceOrientationEvent,
+	 *  dragevent: DragEvent,
+	 *  textevent: TextEvent
+	 */
+};
 
 /**
  * Document.
@@ -2034,10 +2070,14 @@ export default class Document extends Node {
 	 * @returns Event.
 	 */
 	public createEvent(type: string): Event {
-		if (typeof (<any>this[PropertySymbol.window])[type] === 'function') {
-			return new (<any>this[PropertySymbol.window])[type]('init');
+		const typeLower = type.toLowerCase();
+		const constructor = EventTypes[typeLower];
+		if (!constructor) {
+			throw new this[PropertySymbol.window].DOMException(
+				`The event type "${type}" is not supported.`,
+				"NotSupportedError");
 		}
-		return new Event('init');
+		return new constructor("");
 	}
 
 	/**
