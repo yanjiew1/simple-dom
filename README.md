@@ -1,20 +1,6 @@
+# Simple Dom
 
-<h1 align="center">
-    <img alt="Happy DOM Logo" src="https://github.com/capricorn86/happy-dom/raw/master/docs/happy-dom-logo.jpg" />
-</h1>
-<p align="center">
-    A JavaScript implementation of a web browser without its graphical user interface.
-</p>
-
-<p align="center">
-    <a href="https://www.npmjs.com/package/happy-dom">
-        <img alt="Published on NPM" src="https://img.shields.io/npm/v/happy-dom.svg">
-    </a>
-</p>
-
-<p align="center">
-    <a href="https://github.com/capricorn86/happy-dom/wiki/">Documentation</a> | <a href="https://github.com/capricorn86/happy-dom/wiki/Getting-started">Getting started</a> | <a href="https://github.com/capricorn86/happy-dom/wiki/Setup-as-Test-Environment">Setup as Test Environment</a>
-</p>
+Simple Dom is a DOM implementation forked from [Happy DOM](https://github.com/capricorn86/happy-dom).
 
 ## DOM Features
 
@@ -68,4 +54,6 @@ See [Contributing Guide](https://github.com/capricorn86/happy-dom/blob/master/do
 
 ## License
 
-MIT License © 2019-Present [David Ortner](https://github.com/capricorn86)
+MIT License
+© 2019-Present [David Ortner](https://github.com/capricorn86)
+© 2026-Present [Yan-Jie Wang](https://github.com/yanjiew1)
