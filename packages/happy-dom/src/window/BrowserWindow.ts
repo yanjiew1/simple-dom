@@ -760,6 +760,9 @@ export default class BrowserWindow extends EventTarget implements INodeJSGlobal 
 	public console: IConsole;
 	public name = '';
 
+	// Number of frames, always 0 as accessing frames through window[] is not supported.
+	public readonly length = 0;
+
 	// Node.js Globals (populated by VMGlobalPropertyScript)
 	public declare Array: typeof Array;
 	public declare ArrayBuffer: typeof ArrayBuffer;
