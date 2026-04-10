@@ -15,6 +15,15 @@ export default class HTMLImageElement extends HTMLElement {
 	public [PropertySymbol.loading] = 'auto';
 	public [PropertySymbol.x] = 0;
 	public [PropertySymbol.y] = 0;
+
+	/* Deprecated properties */
+	public [PropertySymbol.vspace] = 0;
+	public [PropertySymbol.hspace] = 0;
+	public [PropertySymbol.align] = '';
+	public [PropertySymbol.border] = '';
+	public [PropertySymbol.longDesc] = '';
+	public [PropertySymbol.name] = '';
+
 	public declare cloneNode: (deep?: boolean) => HTMLImageElement;
 
 	/**
@@ -308,6 +317,134 @@ export default class HTMLImageElement extends HTMLElement {
 	 */
 	public decode(): Promise<void> {
 		return Promise.resolve();
+	}
+
+	/**
+	 * Sets align.
+	 *
+	 * @deprecated
+	 * @param align Align.
+	 */
+	public set align(align: string) {
+		this.setAttribute('align', align);
+	}
+
+	/**
+	 * Returns align.
+	 *
+	 * @deprecated
+	 * @return Align.
+	 */
+	public get align(): string {
+		return this.getAttribute('align') || '';
+	}
+
+	/**
+	 * Sets vspace.
+	 *
+	 * @deprecated
+	 * @param vspace Vspace.
+	 */
+	public set vspace(vspace: number | string) {
+		if (typeof vspace === 'string') {
+			 vspace = parseInt(vspace) || 0;
+		}
+		this.setAttribute('vspace', String(vspace));
+	}
+
+	/**
+	 * Returns vspace.
+	 *
+	 * @deprecated
+	 * @return Vspace.
+	 */
+	public get vspace(): number {
+		const vspace = this.getAttribute('vspace');
+		return vspace !== null ? Number(vspace) : 0;
+	}
+
+	/**
+	 * Sets hspace.
+	 *
+	 * @deprecated
+	 * @param hspace Hspace.
+	 */
+	public set hspace(hspace: number | string) {
+		if (typeof hspace === 'string') {
+			hspace = parseInt(hspace) || 0;
+		}
+		this.setAttribute('hspace', String(hspace));
+	}
+
+	/**
+	 * Returns hspace.
+	 *
+	 * @deprecated
+	 * @return Hspace.
+	 */
+	public get hspace(): number {
+		const hspace = this.getAttribute('hspace');
+		return hspace !== null ? Number(hspace) : 0;
+	}
+
+	/**
+	 * Sets border.
+	 *
+	 * @deprecated
+	 * @param border Border.
+	 */
+	public set border(border: string) {
+		this.setAttribute('border', border);
+	}
+
+	/**
+	 * Returns border.
+	 *
+	 * @deprecated
+	 * @return Border.
+	 */
+	public get border(): string {
+		return this.getAttribute('border') || '';
+	}
+
+	/**
+	 * Sets longDesc.
+	 *
+	 * @deprecated
+	 * @param longDesc Long description.
+	 */
+	public set longDesc(longDesc: string) {
+		this.setAttribute('longdesc', longDesc);
+	}
+
+	/**
+	 * Returns longDesc.
+	 *
+	 * @deprecated
+	 * @return Long description.
+	 */
+	public get longDesc(): string {
+		return this.getAttribute('longdesc') || '';
+	}
+
+	/**
+	 * Sets name.
+	 *
+	 * @deprecated
+	 * @param name Name.
+	 */
+	public set name(name: string) {
+		this.setAttribute('name', name);
+	}
+
+	/**
+	 * Returns name.
+	 *
+	 * @deprecated
+	 * @return Name.
+	 */
+	public get name(): string {
+		return this.getAttribute('name') || '';
 	}
 
 	/**
