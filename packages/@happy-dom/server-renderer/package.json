@@ -1,9 +1,9 @@
 {
-	"name": "@happy-dom/server-renderer",
+	"name": "@simple-dom/server-renderer",
 	"version": "0.0.0",
 	"license": "MIT",
-	"homepage": "https://github.com/capricorn86/happy-dom/tree/master/packages/@happy-dom/server-renderer",
-	"repository": "https://github.com/capricorn86/happy-dom",
+	"homepage": "https://github.com/yanjiew1/simple-dom/tree/master/packages/@happy-dom/server-renderer",
+	"repository": "https://github.com/yanjiew1/simple-dom",
 	"author": "David Ortner",
 	"description": "Use Happy DOM for server-side rendering (SSR) or as a static site generator (SSG).",
 	"main": "lib/index.js",

@@ -1,9 +1,9 @@
 {
-	"name": "@happy-dom/jest-environment",
+	"name": "@simple-dom/jest-environment",
 	"version": "0.0.0",
 	"license": "MIT",
-	"homepage": "https://github.com/capricorn86/happy-dom/tree/master/packages/@happy-dom/jest-environment",
-	"repository": "https://github.com/capricorn86/happy-dom",
+	"homepage": "https://github.com/yanjiew1/simple-dom/tree/master/packages/@happy-dom/jest-environment",
+	"repository": "https://github.com/yanjiew1/simple-dom",
 	"author": "David Ortner",
 	"description": "Use Happy DOM as environment in Jest.",
 	"main": "lib/index.js",

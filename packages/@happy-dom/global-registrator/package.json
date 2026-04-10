@@ -1,9 +1,9 @@
 {
-	"name": "@happy-dom/global-registrator",
+	"name": "@simple-dom/global-registrator",
 	"version": "0.0.0",
 	"license": "MIT",
-	"homepage": "https://github.com/capricorn86/happy-dom/tree/master/packages/global-registrator",
-	"repository": "https://github.com/capricorn86/happy-dom",
+	"homepage": "https://github.com/yanjiew1/simple-dom/tree/master/packages/global-registrator",
+	"repository": "https://github.com/yanjiew1/simple-dom",
 	"author": "David Ortner",
 	"description": "Use Happy DOM globally in a Node.js environment for testing.",
 	"main": "lib/index.js",
