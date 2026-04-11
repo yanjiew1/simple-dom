@@ -319,6 +319,7 @@ import PopStateEvent from '../event/events/PopStateEvent.js';
 import type ITimerLoopsLimit from './ITimerLoopsLimit.js';
 import CloseEvent from '../event/events/CloseEvent.js';
 import type WebSocket from '../web-socket/WebSocket.js';
+import { setupGlobalPropertiesFrom } from './GlobalPropertyHelper.js';
 
 const TIMER = {
 	setTimeout: globalThis.setTimeout.bind(globalThis),
@@ -865,6 +866,8 @@ export default class BrowserWindow extends EventTarget implements INodeJSGlobal 
 	#zeroDelayTimeout: { timeouts: Array<Timeout> | null } = { timeouts: null };
 	#timerLoopStacks: string[] = [];
 	#timerLoopLimits: ITimerLoopsLimit[] = [];
+	#VMContextInitialized = false;
+	#globalProxy: BrowserWindow = this;
 
 	/**
 	 * Constructor.
@@ -896,6 +899,11 @@ export default class BrowserWindow extends EventTarget implements INodeJSGlobal 
 
 		this[PropertySymbol.setupVMContext]();
 
+		// Sets global properties from the VM to the Window object.
+		// Otherwise "this.Array" will be undefined for example.
+		setupGlobalPropertiesFrom(this, this.#globalProxy);
+
+		// TODO: The prototype chain will be different from the browser.
 		WindowContextClassExtender.extendClasses(this);
 
 		// Document
@@ -1856,28 +1864,27 @@ export default class BrowserWindow extends EventTarget implements INodeJSGlobal 
 	 * @returns any.
 	 */
 	public [PropertySymbol.evaluateScript](code: string, options?: { filename?: string }): any {
-		return new VM.Script(code, options).runInContext(this);
+		if (process.env.SIMPLEDOM_DISSABLE_VM_CONTEXT === 'true') {
+			throw new Error('VM context is disabled.');
+		} else if (!this.#VMContextInitialized) {
+			throw new Error('VM context is not initialized yet.');
+		} else {
+			return new VM.Script(code, options).runInContext(this);
+		}
 	}
 
 	/**
 	 * Setup of VM context.
 	 */
 	protected [PropertySymbol.setupVMContext](): void {
+		if (process.env.SIMPLEDOM_DISSABLE_VM_CONTEXT === 'true') {
+			throw new Error('VM context is disabled.');
+		}
 		if (!VM.isContext(this)) {
 			VM.createContext(this);
 
-			// Sets global properties from the VM to the Window object.
-			// Otherwise "this.Array" will be undefined for example.
-			const vmGlobalThis = VM.runInContext('this', this);
-			for (const key of Object.getOwnPropertyNames(vmGlobalThis)) {
-				if (key in this) {
-					continue;
-				}
-				const descriptor = Object.getOwnPropertyDescriptor(vmGlobalThis, key);
-				if (descriptor) {
-					Object.defineProperty(this, key, descriptor);
-				}
-			}
+			this.#globalProxy = VM.runInContext('this', this);
+			this.#VMContextInitialized = true;
 		}
 	}
 
